@@ -1,12 +1,13 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
+import { RouterProvider } from "@tanstack/react-router";
 import { theme } from "./theme";
-import { LandingPage } from "./components/LandingPage";
+import { router } from "./router";
 
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <LandingPage />
+      <RouterProvider router={router} />
     </ThemeProvider>
   );
 }

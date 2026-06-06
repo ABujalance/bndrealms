@@ -37,6 +37,20 @@ To add Cloudflare Turnstile or server-side validation later, swap the body of
 [`src/services/subscribe.ts`](src/services/subscribe.ts) to call a Cloudflare
 Worker — nothing else changes.
 
+### Routing
+
+Uses [TanStack Router](https://tanstack.com/router) ([`src/router.tsx`](src/router.tsx)):
+
+- `/newsletter` — the mailing-list page (canonical URL).
+- `/` — kept free for future content; currently redirects to `/newsletter`.
+- anything else — redirects to `/newsletter`.
+
+Because GitHub Pages is a static host with no SPA rewrites, the build
+([`vite.config.ts`](vite.config.ts)) emits `newsletter/index.html` (a real `200`
+for the canonical URL) and `404.html` (SPA fallback for other deep links). If you
+rename the route, update `NEWSLETTER_PATH` in `src/router.tsx` and the emitted
+folder name in `vite.config.ts`.
+
 ### Hero image
 
 Drop a render in [`public/images/`](public/images/) and point
