@@ -9,15 +9,19 @@ import { siteConfig } from "../config/site.config";
  * site). MailerLite then sends the double opt-in confirmation email, which is
  * the real signup gate and our bot defense.
  *
- * Because that endpoint doesn't send CORS headers, we use `mode: "no-cors"`:
- * the request still reaches MailerLite, but the response is opaque (unreadable).
- * So a non-throwing request is treated as "submitted" and we rely on the
- * confirmation email for actual verification.
+ * The endpoint sends `Access-Control-Allow-Origin: *`, so we make a normal CORS
+ * request and read the JSON response ({ success, errors }) — real success/error
+ * handling, no optimistic guessing.
  *
- * If you later want a readable JSON response, per-request bot checks (Turnstile),
- * or server-side validation, swap the body of `subscribe()` to call a Cloudflare
- * Worker / Pages Function instead — nothing else in the app needs to change.
+ * If you later want per-request bot checks (Turnstile) or server-side
+ * validation, swap the body of `subscribe()` to call a Cloudflare Worker /
+ * Pages Function instead — nothing else in the app needs to change.
  */
+
+interface MailerLiteResponse {
+  success?: boolean;
+  errors?: { fields?: { email?: string[] } };
+}
 
 export type SubscribeResult =
   | { status: "ok" }
@@ -53,13 +57,16 @@ export async function subscribe(email: string): Promise<SubscribeResult> {
   body.append("anticsrf", "true");
 
   try {
-    await fetch(endpoint, {
-      method: "POST",
-      mode: "no-cors",
-      body,
-    });
-    // Opaque response — assume submitted; double opt-in does the real work.
-    return { status: "ok" };
+    const res = await fetch(endpoint, { method: "POST", body });
+    const data = (await res.json().catch(() => null)) as MailerLiteResponse | null;
+
+    if (data?.success) {
+      return { status: "ok" };
+    }
+    if (data?.errors?.fields?.email) {
+      return { status: "invalid_email" };
+    }
+    return { status: "error", message: JSON.stringify(data) };
   } catch (err) {
     return {
       status: "error",

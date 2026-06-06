@@ -31,9 +31,9 @@ token, nothing secret in the browser. Subscribers confirm via MailerLite's
 2. From its embed snippet grab your **account id** and **form id**.
 3. Put them in `siteConfig.mailerLite` (`accountId`, `formId`).
 
-Because the endpoint returns an opaque (`no-cors`) response, the UI optimistically
-shows success and relies on the confirmation email. To get a readable response or
-add Cloudflare Turnstile later, swap the body of
+The endpoint sends `Access-Control-Allow-Origin: *`, so the app reads MailerLite's
+real JSON response (`{ success, errors }`) and shows accurate success/error states.
+To add Cloudflare Turnstile or server-side validation later, swap the body of
 [`src/services/subscribe.ts`](src/services/subscribe.ts) to call a Cloudflare
 Worker — nothing else changes.
 

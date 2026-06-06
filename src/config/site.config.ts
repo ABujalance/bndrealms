@@ -54,8 +54,7 @@ export const siteConfig: SiteConfig = {
   // TODO: replace with your real Etsy shop URL.
   etsyStoreUrl: "https://www.etsy.com/shop/BnDRealms",
   mailerLite: {
-    // TODO: fill these from your MailerLite embedded-form snippet.
-    accountId: "",
-    formId: "",
+    accountId: "2412087",
+    formId: "189536611257550319",
   },
 };
