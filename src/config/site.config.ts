@@ -49,8 +49,8 @@ export const siteConfig: SiteConfig = {
   },
   // TODO: drop your render in public/images/ and point here.
   heroBackgroundImage: "/images/dungeon-bg.jpg",
-  // TODO: optional brand logo (the "B&D" crest). "" uses a text fallback.
-  logoImage: "",
+  // Brand logo (the "B&D" crest). "" falls back to a text mark.
+  logoImage: "/images/logo.png",
   // TODO: replace with your real Etsy shop URL.
   etsyStoreUrl: "https://www.etsy.com/shop/BnDRealms",
   mailerLite: {

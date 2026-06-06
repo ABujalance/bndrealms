@@ -15,7 +15,6 @@ export interface Strings {
     error: string;
   };
   footer: {
-    hostedOn: string;
     etsyStore: string;
   };
 }

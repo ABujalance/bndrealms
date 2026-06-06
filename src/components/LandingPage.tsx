@@ -53,7 +53,7 @@ export function LandingPage() {
                 component="img"
                 src={logoImage}
                 alt="B&D Realms"
-                sx={{ height: 64, width: "auto" }}
+                sx={{ height: { xs: 110, sm: 132 }, width: "auto" }}
               />
             ) : (
               <Typography
@@ -81,8 +81,6 @@ export function LandingPage() {
 
       <Box component="footer" sx={{ py: 2, textAlign: "center" }}>
         <Typography variant="caption" sx={{ color: "text.secondary" }}>
-          {strings.footer.hostedOn}
-          {"  |  "}
           <Link href={etsyStoreUrl} target="_blank" rel="noopener" color="primary.light">
             {strings.footer.etsyStore}
           </Link>

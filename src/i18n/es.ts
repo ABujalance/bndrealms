@@ -2,7 +2,7 @@ import type { Strings } from "./types";
 
 export const es: Strings = {
   hero: {
-    title: "B&D Realms. Sistemas de mazmorras modulares.",
+    title: "B&D Realms",
     subtitle:
       "Apúntate y consigue un 10% de descuento en tu primer Starter Kit en Etsy y sé el primero en enterarte de las nuevas expansiones.",
   },
@@ -16,7 +16,6 @@ export const es: Strings = {
     error: "Algo ha ido mal. Inténtalo de nuevo.",
   },
   footer: {
-    hostedOn: "Alojado en GitHub Pages",
     etsyStore: "Nuestra tienda de Etsy",
   },
 };
