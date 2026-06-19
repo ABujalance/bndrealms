@@ -4,7 +4,7 @@ export const en: Strings = {
   hero: {
     title: "B&D Realms",
     subtitle:
-      "Sign up and get 10% off your first Starter Kit on Etsy — and be the first to hear about new expansions.",
+      "Sign up and get 10% off your first Set on Etsy — and be the first to hear about new expansions.",
   },
   form: {
     emailPlaceholder: "Your email address…",
@@ -16,6 +16,8 @@ export const en: Strings = {
     error: "Something went wrong. Please try again.",
   },
   footer: {
-    etsyStore: "Our Etsy store",
+    etsyStore: "Visit our Etsy Store",
+    tiktok: "TikTok",
+    pinterest: "Pinterest",
   },
 };

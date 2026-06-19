@@ -16,6 +16,8 @@ export interface Strings {
   };
   footer: {
     etsyStore: string;
+    tiktok: string;
+    pinterest: string;
   };
 }
 

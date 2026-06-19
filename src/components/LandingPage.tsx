@@ -1,4 +1,4 @@
-import { Box, Container, Link, Paper, Stack, Typography } from "@mui/material";
+import { Box, Button, Container, Link, Paper, Stack, Typography } from "@mui/material";
 import { siteConfig } from "../config/site.config";
 import { getStrings } from "../i18n";
 import { SubscribeForm } from "./SubscribeForm";
@@ -6,7 +6,7 @@ import { SubscribeForm } from "./SubscribeForm";
 const strings = getStrings();
 
 export function LandingPage() {
-  const { heroBackgroundImage, logoImage, etsyStoreUrl } = siteConfig;
+  const { heroBackgroundImage, logoImage, etsyStoreUrl, tiktokUrl, pinterestUrl } = siteConfig;
 
   return (
     <Box
@@ -79,12 +79,35 @@ export function LandingPage() {
         </Paper>
       </Container>
 
-      <Box component="footer" sx={{ py: 2, textAlign: "center" }}>
-        <Typography variant="caption" sx={{ color: "text.secondary" }}>
-          <Link href={etsyStoreUrl} target="_blank" rel="noopener" color="primary.light">
+      <Box component="footer" sx={{ py: 3, textAlign: "center" }}>
+        <Stack spacing={1.5} alignItems="center">
+          <Button
+            component="a"
+            href={etsyStoreUrl}
+            target="_blank"
+            rel="noopener"
+            variant="outlined"
+            sx={{
+              color: "primary.light",
+              borderColor: "rgba(184, 142, 60, 0.5)",
+              px: 3,
+              "&:hover": {
+                borderColor: "primary.main",
+                backgroundColor: "rgba(184, 142, 60, 0.08)",
+              },
+            }}
+          >
             {strings.footer.etsyStore}
-          </Link>
-        </Typography>
+          </Button>
+          <Stack direction="row" spacing={2}>
+            <Link href={tiktokUrl} target="_blank" rel="noopener" variant="caption" color="text.secondary">
+              {strings.footer.tiktok}
+            </Link>
+            <Link href={pinterestUrl} target="_blank" rel="noopener" variant="caption" color="text.secondary">
+              {strings.footer.pinterest}
+            </Link>
+          </Stack>
+        </Stack>
       </Box>
     </Box>
   );

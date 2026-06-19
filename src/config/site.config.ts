@@ -27,6 +27,8 @@ export interface SiteConfig {
   logoImage: string;
   /** Where the "Our Etsy store" footer link points. */
   etsyStoreUrl: string;
+  tiktokUrl: string;
+  pinterestUrl: string;
   /** MailerLite signup configuration (see ../services/subscribe.ts). */
   mailerLite: {
     /** Your MailerLite account id (numeric, from the embed snippet). */
@@ -51,8 +53,9 @@ export const siteConfig: SiteConfig = {
   heroBackgroundImage: "/images/dungeon-bg.jpg",
   // Brand logo (the "B&D" crest). "" falls back to a text mark.
   logoImage: "/images/logo.png",
-  // TODO: replace with your real Etsy shop URL.
   etsyStoreUrl: "https://www.etsy.com/shop/BnDRealms",
+  tiktokUrl: "https://www.tiktok.com/@bndrealms",
+  pinterestUrl: "https://www.pinterest.com/bndrealms",
   mailerLite: {
     accountId: "2412087",
     formId: "189536611257550319",
